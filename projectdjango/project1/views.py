@@ -1,14 +1,23 @@
 from django.shortcuts import render
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse,HttpResponse
 from googletrans import Translator
 import cv2
-import pytesseract
-from PIL import Image
+# import pytesseract
+# from PIL import Image
 from project1.camera import VideoCamera
 from gtts import gTTS
 import speech_recognition as sr
 import os
 
+# def fetchimage(request):
+#     tin = request.POST['uri']
+#     path_to_tesseract=r"/usr/local/Cellar/tesseract/5.0.0"
+#     Imagepath=tin
+#     pytesseract.tesseract_cmd=path_to_tesseract
+#     text1=pytesseract.image_to_string(Image.open(Imagepath))
+#     translater = Translator()
+#     out=translater.translate(text1,dest="en")
+#     return render(request,'answer4.html',{'text': out.text})
 
 def imagetotext(request):
     return render(request,'imagetotext.html')
@@ -25,7 +34,6 @@ def speechtospeech(request):
     return render(request,'speechtospeech.html')
     
 def speech(request):
-
     flag = 0
     dic = ('afrikaans', 'af', 'albanian', 'sq', 
         'amharic', 'am', 'arabic', 'ar',

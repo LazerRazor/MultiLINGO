@@ -42,9 +42,19 @@
 function take_snapshot(){
 
 Webcam.snap( function(data_uri){
-document.getElementById('results').innerHTML=
-'<img src="'+ data_uri +  '" alt="">';
+
+        fetch('/fetchimage', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({uri: datauri})
+      }); 
 });
+
+<!-- send post request using fetch -->
+
 
 }
 </script>
